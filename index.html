@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textique: Where Words Find Meaning</title>
+    <style>
+        /* General Styling */
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    overflow-y: auto; /* Enable scrolling */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Start from the top */
+    align-items: center;
+}
+
+/* Fullscreen Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: linear-gradient(to bottom, #ffffff, #f4f8fd);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0; /* Add top and bottom margin for spacing */
+}
+
+/* Title Styling */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #ff6f61;
+    margin-bottom: 0.5rem;
+    animation: slideDown 1s ease-in-out;
+}
+
+p {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* Input and Buttons Styling */
+input[type="text"], select {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    border: 2px solid #ff9a76;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+input[type="text"]:focus, select:focus {
+    box-shadow: 0px 0px 15px rgba(255, 154, 118, 0.5);
+    transform: scale(1.02);
+    outline: none;
+}
+
+button {
+    padding: 0.8rem 2rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to right, #ff758c, #ff6f61);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+    transform: scale(1.08);
+    box-shadow: 0px 5px 15px rgba(255, 111, 97, 0.4);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Output Areas */
+.output {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    overflow-y: auto; /* Enable scrolling for the output */
+}
+
+.section {
+    background: linear-gradient(145deg, #fcfcfc, #eef2f3);
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    animation: fadeIn 1s ease-in-out;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 1rem; /* Ensure spacing between sections */
+}
+
+.section:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#summary, #synonyms, #translation {
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 250px;
+    border: 1px solid #ddd;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #ff758c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.voice-btn {
+    background: none;
+    border: none;
+    color: #ff758c;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.voice-btn:hover {
+    color: #ff6f61;
+    transform: scale(1.2);
+}
+
+#picture {
+    display: none;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#picture:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 <i>Textique: Where Words Find Meaning</i></h1>
+        <p>Quickly summarize, translate, and explore vocabularies from any text!</p>
+
+        <!-- Input Section -->
+        <input type="text" id="userInput" placeholder="Enter a word or topic">
+        <div class="buttons">
+            <button id="summarizeBtn">Summarize</button>
+            <button id="synonymsBtn">Find Synonyms</button>
+            <button id="translateBtn">Translate</button>
+        </div>
+
+        <!-- Output Sections -->
+        <div class="output">
+            <div class="section">
+                <h2>Summary <button id="summarizeVoiceBtn" class="voice-btn">🔊</button></h2>
+                <p id="summary">Awaiting input...</p>
+                <h3>Visualize</h3><center>
+                <img id="picture" alt="Topic Image" style="max-width: 100%; display: none;">
+                </center>
+            </div>
+
+            <div class="section">
+                <h2>Synonyms <button id="synonymsVoiceBtn" class="voice-btn">🔊</button></h2>
+                <p id="synonyms">Awaiting input...</p>
+            </div>
+
+            <div class="section">
+                <h2>Translation</h2>
+                <label for="languageSelector">Choose a language:</label>
+                <select id="languageSelector"></select>
+                <p id="translation">Awaiting translation...</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
