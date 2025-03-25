@@ -3,8 +3,7 @@
 
 ## Installation
 1. Clone the repository:
-git clone https://github.com/username/TextiqueTools.git
-
+git clone git clone https://github.com/Hairun-nisha/Word-Transform.git
 2. Open `index.html` in your preferred browser.
 3. Ensure an internet connection for API integrations.
 
